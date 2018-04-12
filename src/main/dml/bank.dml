@@ -5,6 +5,27 @@ class Bank {
 	String name;
 }
 
+class Account {
+	String code;
+	String name;
+	int balance;
+}
+
+class SavingsAccount extends Account {
+}
+
+class WithdrawalAccount extends Account {
+}
+
+relation BankHasAccount {
+	Bank playsRole bank {
+		multiplicity 1..1;
+	}
+	Account playsRole account {
+		multiplicity 0..*;
+	}
+}
+
 relation DomainRootHasBankApplication {
 	.pt.ist.fenixframework.DomainRoot playsRole root {
 		multiplicity 1..1;

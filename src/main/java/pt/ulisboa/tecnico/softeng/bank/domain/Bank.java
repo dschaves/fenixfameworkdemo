@@ -12,9 +12,23 @@ public class Bank extends Bank_Base {
 	}
 
 	public void delete() {
+
+		for (Account account : getAccountSet()) {
+			removeAccount(account);
+			account.delete();
+		}
+
 		setRoot(null);
 
 		deleteDomainObject();
+	}
+
+	public int totalBalance() {
+		int total = 0;
+		for (Account account : getAccountSet()) {
+			total += account.getBalance();
+		}
+		return total;
 	}
 
 	public static Bank getBankByCode(String code) {
